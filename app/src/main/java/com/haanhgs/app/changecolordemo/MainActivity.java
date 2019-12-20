@@ -5,6 +5,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import butterknife.BindView;
@@ -27,6 +29,28 @@ public class MainActivity extends AppCompatActivity {
     private int colorRes;
     private int colorRGB;
 
+    private static final String COLORNAME = "colorName";
+    private static final String COLORRES = "colorRes";
+    private static final String COLORRGB = "colorRGB";
+    private static final String ITERATOR = "iterator";
+
+    private void loadInstanceState(Bundle bundle){
+        if (bundle != null){
+            i = bundle.getInt(ITERATOR);
+            colorRes = bundle.getInt(COLORRES);
+            colorRGB = bundle.getInt(COLORRGB);
+            colorName = bundle.getString(COLORNAME);
+        }
+
+        if (colorName != null) tvColor.setText(colorName);
+        if (colorRes != 0){
+            bnColor.setBackgroundTintList(ContextCompat.getColorStateList(this, colorRes));
+        }
+        if (colorRGB != 0){
+            tvColor.setTextColor(colorRGB);
+            lnColor.setBackgroundColor(colorRGB);
+        }
+    }
 
     private void hideActionBar(){
         if (getSupportActionBar() != null) getSupportActionBar().hide();
@@ -47,9 +71,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        loadInstanceState(savedInstanceState);
         hideActionBar();
         hideStatusBar();
         getColorNamesList();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(COLORNAME, colorName);
+        outState.putInt(COLORRES, colorRes);
+        outState.putInt(COLORRGB, colorRGB);
+        outState.putInt(ITERATOR, i);
     }
 
     private void getColorForEachIterate(){
