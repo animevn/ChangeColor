@@ -4,7 +4,7 @@
     <string name="tvColor">Color</string>
     <string name="bnColor">Change</string>
 
-    <string-array name="color">
+    <string-array name="colors">
         <item>YELLOW</item>
         <item>MAGENTA</item>
         <item>GREEN</item>
