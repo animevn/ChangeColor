@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         colorRGB = ContextCompat.getColor(this, colorRes);
     }
 
+
     private void iterateThroungColorList(){
         getColorForEachIterate();
         lnColor.setBackgroundColor(colorRGB);
