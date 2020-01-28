@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bnColor)
     Button bnColor;
 
-    private int[]colorIds;
     private String[]colorNames;
     private String colorName;
     private int i = 0;
