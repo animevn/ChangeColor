@@ -1,22 +1,21 @@
 package com.haanhgs.app.changecolordemo.model;
 
 import android.content.Context;
-
-import com.haanhgs.app.changecolordemo.R;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import androidx.core.content.ContextCompat;
 
-public class Model {
+public class Model implements Serializable {
 
-    private List<String> colorNames = new ArrayList<>();
-    private String colorName;
+    private final List<String> colorNames = new ArrayList<>();
     private int iterator = 0;
+    private String colorName;
     private int colorRes;
     private int colorRGB;
+
+    private static final long serialUID = 220479;
 
     public void getColorForEachIterate(Context context){
         colorName = colorNames.get(iterator);
@@ -37,10 +36,6 @@ public class Model {
 
     public String getColorName() {
         return colorName;
-    }
-
-    public int getIterator() {
-        return iterator;
     }
 
     public int getColorRes() {

@@ -54,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
                 updateViews(model.getColorName(), model.getColorRGB(), model.getColorRes()));
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        viewModel.loadModel();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewModel.saveModel();
+    }
+
     @OnClick(R.id.bnColor)
     public void onViewClicked(){
         viewModel.iterateThrougList();
