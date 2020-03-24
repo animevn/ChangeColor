@@ -4,31 +4,35 @@ import android.content.Context;
 
 import com.haanhgs.app.changecolordemo.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import androidx.core.content.ContextCompat;
 
 public class Model {
 
-    private String[]colorNames;
+    private List<String> colorNames = new ArrayList<>();
     private String colorName;
-    private int iterator;
+    private int iterator = 0;
     private int colorRes;
     private int colorRGB;
 
-    private void getColorForEachIterate(Context context){
-        colorName = colorNames[iterator];
+    public void getColorForEachIterate(Context context){
+        colorName = colorNames.get(iterator);
         colorRes = context.getResources()
                 .getIdentifier(colorName, "color", context.getPackageName());
         colorRGB = ContextCompat.getColor(context, colorRes);
     }
 
     public void iterateThroughColorList(Context context){
-        getColorForEachIterate(context);
         iterator++;
-        if (iterator == colorNames.length) iterator = 0;
+        if (iterator == colorNames.size()) iterator = 0;
+        getColorForEachIterate(context);
     }
 
     public void setColorNames(String[] colorNames) {
-        this.colorNames = colorNames;
+        Collections.addAll(this.colorNames, colorNames);
     }
 
     public String getColorName() {

@@ -17,6 +17,7 @@ public class ViewModel extends AndroidViewModel {
     private static Model initModel(Context context){
         Model model = new Model();
         model.setColorNames(context.getResources().getStringArray(R.array.colors));
+        model.getColorForEachIterate(context);
         return model;
     }
 
