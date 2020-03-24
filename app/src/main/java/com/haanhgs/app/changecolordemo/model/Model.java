@@ -45,5 +45,4 @@ public class Model implements Serializable {
     public int getColorRGB() {
         return colorRGB;
     }
-
 }

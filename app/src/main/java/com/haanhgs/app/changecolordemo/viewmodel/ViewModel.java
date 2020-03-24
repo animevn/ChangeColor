@@ -72,5 +72,4 @@ public class ViewModel extends AndroidViewModel {
         }
         liveData.setValue(model);
     }
-
 }
