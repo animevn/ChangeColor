@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+//
 public class ViewModel extends AndroidViewModel {
 
     private final MutableLiveData<Model>liveData = new MutableLiveData<>();
