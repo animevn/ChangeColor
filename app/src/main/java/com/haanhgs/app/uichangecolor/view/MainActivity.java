@@ -1,12 +1,12 @@
-package com.haanhgs.app.changecolordemo.view;
+package com.haanhgs.app.uichangecolor.view;
 
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.haanhgs.app.changecolordemo.R;
-import com.haanhgs.app.changecolordemo.viewmodel.ViewModel;
+import com.haanhgs.app.uichangecolor.R;
+import com.haanhgs.app.uichangecolor.viewmodel.ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;

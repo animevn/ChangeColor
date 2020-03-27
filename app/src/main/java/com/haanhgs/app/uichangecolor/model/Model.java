@@ -1,4 +1,4 @@
-package com.haanhgs.app.changecolordemo.model;
+package com.haanhgs.app.uichangecolor.model;
 
 import android.content.Context;
 import java.io.Serializable;

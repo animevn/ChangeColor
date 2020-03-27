@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Change Color Demo</string>
+    <string name="app_name">Change Color</string>
 
     <string name="tvColor">Color</string>
     <string name="bnColor">Change</string>

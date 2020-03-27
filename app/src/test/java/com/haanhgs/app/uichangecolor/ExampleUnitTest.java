@@ -1,4 +1,4 @@
-package com.haanhgs.app.changecolordemo;
+package com.haanhgs.app.uichangecolor;
 
 import org.junit.Test;
 

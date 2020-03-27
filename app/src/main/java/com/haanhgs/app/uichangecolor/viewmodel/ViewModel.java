@@ -1,9 +1,9 @@
-package com.haanhgs.app.changecolordemo.viewmodel;
+package com.haanhgs.app.uichangecolor.viewmodel;
 
 import android.app.Application;
 import android.content.Context;
-import com.haanhgs.app.changecolordemo.R;
-import com.haanhgs.app.changecolordemo.model.Model;
+import com.haanhgs.app.uichangecolor.R;
+import com.haanhgs.app.uichangecolor.model.Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

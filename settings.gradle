@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Change Color Demo'
+rootProject.name='UIChangeColor'
