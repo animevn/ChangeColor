@@ -1,6 +1,9 @@
 package com.haanhgs.app.uichangecolor.view;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -29,10 +32,19 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
     }
 
+    @SuppressWarnings("deprecation")
     private void hideStatusBar(){
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            final WindowInsetsController controller = getWindow().getInsetsController();
+            if (controller != null){
+                controller.hide(WindowInsets.Type.statusBars());
+            }
+        }else {
+            getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
+        }
     }
 
     private void updateViews(String colorName, int colorRGB, int colorRes){
