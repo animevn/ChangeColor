@@ -9,7 +9,7 @@ public class Model implements Serializable {
 
     private static final long serialUID = 220479;
 
-    private List<String> colorNames = new ArrayList<>();
+    private final List<String> colorNames = new ArrayList<>();
     private int iterator = 0;
     private String colorName;
     private int colorRes;

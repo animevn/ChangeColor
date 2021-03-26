@@ -13,9 +13,9 @@ import androidx.lifecycle.MutableLiveData;
 
 public class Repo {
 
-    private MutableLiveData<Model> liveData = new MutableLiveData<>();
+    private final MutableLiveData<Model> liveData = new MutableLiveData<>();
     private Model model;
-    private Context context;
+    private final Context context;
 
     public Repo(Context context) {
         this.context = context;
@@ -50,12 +50,11 @@ public class Repo {
     }
 
     public void saveModel(){
-        try{
-            FileOutputStream outputStream = context.openFileOutput("save", Context.MODE_PRIVATE);
-            ObjectOutputStream stream = new ObjectOutputStream(outputStream);
+        try(FileOutputStream outputStream = context.openFileOutput("save", Context.MODE_PRIVATE);
+            ObjectOutputStream stream = new ObjectOutputStream(outputStream)
+        ){
             stream.writeObject(model);
             stream.flush();
-            stream.close();
         }catch (Exception e){
             Log.e("Error: ", e.toString());
         }
@@ -65,9 +64,9 @@ public class Repo {
         initModel();
         File file = new File(context.getFilesDir(), "save");
         if (file.exists()){
-            try{
-                FileInputStream inputStream = context.openFileInput("save");
-                ObjectInputStream stream = new ObjectInputStream(inputStream);
+            try(FileInputStream inputStream = context.openFileInput("save");
+                ObjectInputStream stream = new ObjectInputStream(inputStream)
+            ){
                 Object object = stream.readObject();
                 model = (Model)object;
             }catch (Exception e){

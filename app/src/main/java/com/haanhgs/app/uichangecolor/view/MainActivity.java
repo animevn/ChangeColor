@@ -5,37 +5,26 @@ import android.os.Bundle;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.haanhgs.app.uichangecolor.R;
+import com.haanhgs.app.uichangecolor.databinding.ActivityMainBinding;
 import com.haanhgs.app.uichangecolor.viewmodel.ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.lnColor)
-    LinearLayout lnColor;
-    @BindView(R.id.tvColor)
-    TextView tvColor;
-    @BindView(R.id.bnColor)
-    Button bnColor;
-
     private ViewModel viewModel;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         hideStatusBar();
         hideActionBar();
         initViewModel();
+        binding.bnColor.setOnClickListener(view->viewModel.iterateThroughColorList());
     }
 
     @SuppressWarnings("deprecation")
@@ -60,18 +49,13 @@ public class MainActivity extends AppCompatActivity {
     private void initViewModel() {
         viewModel = new ViewModelProvider(this).get(ViewModel.class);
         viewModel.getLiveData().observe(this, model -> {
-            tvColor.setText(model.getColorName());
-            tvColor.setBackgroundColor(model.getColorRgb());
-            lnColor.setBackgroundColor(model.getColorRgb());
-            bnColor.setBackgroundTintList(
+            binding.tvColor.setText(model.getColorName());
+            binding.tvColor.setBackgroundColor(model.getColorRgb());
+            binding.lnColor.setBackgroundColor(model.getColorRgb());
+            binding.bnColor.setBackgroundTintList(
                     ContextCompat.getColorStateList(MainActivity.this, model.getColorRes())
             );
         });
-    }
-
-    @OnClick(R.id.bnColor)
-    public void onViewClicked() {
-        viewModel.iterateThroughColorList();
     }
 
     @Override
